@@ -31,6 +31,7 @@ Respuesta inmediata: Estado 200 OK
 2. Modelo de Inteligencia Artificial (IA)
 
 
+
 ![Imagen de WhatsApp 2025-04-07 a las 22 33 35_5167b72c](https://github.com/user-attachments/assets/063f3081-b571-4249-a6b0-d2220c9368af)
 
 Tipo de nodo: Gorq Chat Model
@@ -45,10 +46,12 @@ Tipo de nodo: Read Binary File → Convert to JSON (o Read CSV)
 Descripción: Lee un archivo CSV que contiene una base de datos utilizada por el agente para responder o tomar decisiones.
 Ejemplo de contenido del CSV:
 
+
 ![image](https://github.com/user-attachments/assets/de79156c-c5e7-439b-84c9-516b631021bd)
 
 
 3.  Nodo Calculadora
+
 
 
 ![calcu](https://github.com/user-attachments/assets/7ccfc87a-b77e-458a-ab50-c4da28738a84)
@@ -58,6 +61,7 @@ Descripción: Realiza operaciones matemáticas con los datos extraídos del CSV 
 Ejemplo: Sumar valores, calcular promedios, etc.
 
 4.  Nodo de Almacenamiento
+
 
 
 ![memory](https://github.com/user-attachments/assets/f10c853b-3dd1-4350-819e-642d6c53490f)

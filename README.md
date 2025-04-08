@@ -55,6 +55,54 @@ Respuesta generada
 Datos utilizados
 Resultado del cálculo
 
+ Flujo General
+[Usuario] 
+   ↓ 
+[Chat Trigger] 
+   ↓ 
+[Modelo de IA]
+   ↓
+┌──────────────┬─────────────┬─────────────┐
+↓              ↓             ↓
+[CSV Reader]  [Calculadora] [Almacenamiento]
+   ↓              ↓             ↓
+   →→→→→→→→→→→ [Respuesta al Usuario] ←←←←←←←←←←
+
+   
+
+Casos de Uso
+Consulta de datos específicos:
+Usuario: "¿Cuál es el valor del producto _1?"
+Respuesta: "El valor de producto 1 es 25."
+Realización de cálculos:
+Usuario: "¿Cuál es la suma de los valores de todos los productos?"
+Respuesta: "La suma total es 65."
+Registro de interacciones:
+Todas las interacciones quedan guardadas para seguimiento o análisis posterior.
+
+ Requisitos del Sistema
+Plataforma: n8n (self-hosted o cloud)
+Nodos requeridos:
+Webhook / Chat
+AI Agent (OpenAI, Hugging Face, etc.)
+CSV Parser
+Function o Math
+Nodo de almacenamiento
+
+ Pruebas Realizadas
+Validación de respuestas del modelo de IA
+Lectura correcta del CSV
+Ejecución de cálculos con inputs dinámicos
+Almacenamiento exitoso de logs
+Flujo completo sin errores
+
+
+ Observaciones
+Se recomienda validar que el CSV esté actualizado antes de cada sesión de usuario.
+El modelo de IA puede personalizarse para responder con un estilo específico o seguir ciertas reglas.
+El sistema puede escalarse para integrar APIs externas, otros tipos de datos o flujos más complejos.
+
+
 
 
 ![image](https://github.com/user-attachments/assets/3db8eb7f-6d91-4a87-9db9-bd424518649d)

@@ -1,0 +1,179 @@
+{
+  "name": "MCP Project",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5b410409-5b0b-47bd-b413-5b9b1000a063",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        540,
+        40
+      ],
+      "webhookId": "a889d2ae-2159-402f-b326-5f61e90f602e"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Eres mi asistente para consultar los productos y precios de mi tienda, el nombre de los productos y los precios se encuentran en el archivo prod_ferre.csv de Google Sheets, utiliza la calculadora para realizar operaciones referentes a las consultas de los productos que te solicite en el chat."
+        }
+      },
+      "id": "29963449-1dc1-487d-96f2-7ff0a5c3cd97",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        780,
+        40
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "75481370-bade-4d90-a878-3a3b0201edcc",
+      "name": "Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        860,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "model": "deepseek-r1-distill-qwen-32b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        740,
+        220
+      ],
+      "id": "12877961-ef7a-41ec-872f-5351ad181f8a",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "3zVSeQmxYgncHjSL",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        980,
+        220
+      ],
+      "id": "e6a51b29-6c02-4bfe-8541-add2548e11c8",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "134iqxMkpiUscQzdo010Aa5lNf_tFkldB1j9mDhPxMmY",
+          "mode": "list",
+          "cachedResultName": "prod_ferre",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/134iqxMkpiUscQzdo010Aa5lNf_tFkldB1j9mDhPxMmY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1226812976,
+          "mode": "list",
+          "cachedResultName": "prod_ferre.csv",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/134iqxMkpiUscQzdo010Aa5lNf_tFkldB1j9mDhPxMmY/edit#gid=1226812976"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [
+        1100,
+        220
+      ],
+      "id": "b37ebbf5-de38-47f0-a18e-1141e967e51e",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "dbQFL27iDgsHniPn",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6039244b-abab-4276-82b7-d412a5e61142",
+  "meta": {
+    "templateId": "PT1i+zU92Ii5O2XCObkhfHJR5h9rNJTpiCIkYJk9jHU=",
+    "templateCredsSetupCompleted": true,
+    "instanceId": "91b9b2d7d5ee00bb53146848c31faa7c86fb19a33a03b708065369bd32e3a156"
+  },
+  "id": "mMrO0oRww4B1RA5v",
+  "tags": []
+}

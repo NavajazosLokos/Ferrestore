@@ -1,0 +1,567 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Contratación de Personal",
+        "formDescription": "¡Únete a Ferretestore! Si quieres ser parte de nuestro equipo, llena el formulario y nosotros te contactaremos lo más pronto posible.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "¿Cuál es tu nombre?",
+              "placeholder": "Andrew Stallings",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "¿Cuál es tu edad?",
+              "fieldType": "number",
+              "placeholder": "20",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "CV",
+              "fieldType": "file",
+              "multipleFiles": false,
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Género",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Masculino"
+                  },
+                  {
+                    "option": "Femenino"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email:",
+              "fieldType": "email",
+              "placeholder": "example@gmail.com",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Teléfono:",
+              "fieldType": "number",
+              "placeholder": "3333333333"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "62f0e73b-dd9e-4a0b-acae-7e74ad92052a",
+      "name": "On form submission",
+      "webhookId": "526d34c6-9f35-4019-939f-fbbfaae2a73c"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "e201394c-9bd4-45d6-a57d-88ab65ed0062",
+      "name": "Wait",
+      "webhookId": "f3bbca1c-59fa-49c7-9078-ea3e29df41ea"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "06484cb7-e6a2-4a97-a26e-ec43c28a53c0",
+              "leftValue": "={{ $('On form submission').item.json['¿Cuál es tu edad?'] }}",
+              "rightValue": 18,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "0296913f-e1eb-4603-a1d7-4ba0747dd953",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('On form submission').item.json['Género'] }}",
+                    "rightValue": "Masculino",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "e42e827e-5ba5-4d5b-bb1f-b3a294e49fa9"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "59b8133c-72c0-4347-bf48-7f9b443198c3",
+                    "leftValue": "={{ $('On form submission').item.json['Género'] }}",
+                    "rightValue": "Femenino",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        660,
+        -100
+      ],
+      "id": "ee5b44b9-1a85-4eab-a34f-905774dec556",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE",
+          "mode": "list",
+          "cachedResultName": "Solicitud Vacante",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $('On form submission').item.json['¿Cuál es tu nombre?'] }}",
+            "Edad": "={{ $('On form submission').item.json['¿Cuál es tu edad?'] }}",
+            "Género": "={{ $('On form submission').item.json['Género'] }}",
+            "Candidato": "SÍ",
+            "Email": "={{ $('On form submission').item.json['Email:'] }}",
+            "Teléfono": "={{ $('On form submission').item.json['Teléfono:'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Edad",
+              "displayName": "Edad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Género",
+              "displayName": "Género",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Candidato",
+              "displayName": "Candidato",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        880,
+        -200
+      ],
+      "id": "b6e72a85-0af2-42d9-a8a1-55ef85c1b7c8",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Mlsyhn0QVdkz9Eqg",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE",
+          "mode": "list",
+          "cachedResultName": "Solicitud Vacante",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $('On form submission').item.json['¿Cuál es tu nombre?'] }}",
+            "Candidato": "NO",
+            "Edad": "={{ $('On form submission').item.json['¿Cuál es tu edad?'] }}",
+            "Género": "={{ $('On form submission').item.json['Género'] }}",
+            "Email": "={{ $('On form submission').item.json['Email:'] }}",
+            "Teléfono": "={{ $('On form submission').item.json['Teléfono:'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Edad",
+              "displayName": "Edad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Género",
+              "displayName": "Género",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Candidato",
+              "displayName": "Candidato",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        880,
+        0
+      ],
+      "id": "cec4fb88-c683-41d6-91db-3d00109f91e2",
+      "name": "Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Mlsyhn0QVdkz9Eqg",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE",
+          "mode": "list",
+          "cachedResultName": "Solicitud Vacante",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QyXlaB6Y2E1-NJ5PCiuOhTM962_uw5uQXkkRU7C68aE/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $('On form submission').item.json['¿Cuál es tu nombre?'] }}",
+            "Edad": "={{ $('On form submission').item.json['¿Cuál es tu edad?'] }}",
+            "Género": "={{ $('On form submission').item.json['Género'] }}",
+            "Email": "={{ $('On form submission').item.json['Email:'] }}",
+            "Teléfono": "={{ $('On form submission').item.json['Teléfono:'] }}",
+            "Candidato": "NO"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Edad",
+              "displayName": "Edad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Género",
+              "displayName": "Género",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Candidato",
+              "displayName": "Candidato",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        660,
+        100
+      ],
+      "id": "60f9bb01-645c-423a-bdf9-f048009168fa",
+      "name": "Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Mlsyhn0QVdkz9Eqg",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0f3ba36c-fd6c-4d22-b8b5-bd0749d5e588",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "91b9b2d7d5ee00bb53146848c31faa7c86fb19a33a03b708065369bd32e3a156"
+  },
+  "id": "JFeQd0e27oOo1sNk",
+  "tags": []
+}

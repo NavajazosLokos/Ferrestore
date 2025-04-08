@@ -106,6 +106,9 @@ Resultado del cálculo
 Casos de Uso
 Consulta de datos específicos:
 
+![chat1](https://github.com/user-attachments/assets/838efcdb-9d16-4eb3-92a0-04e835f985dd)
+
+
 Usuario: "¿Cuál es el valor del producto _1?"
 Respuesta: "El valor de producto 1 es 25."
 
@@ -138,6 +141,18 @@ Lectura correcta del CSV
 Ejecución de cálculos con inputs dinámicos
 Almacenamiento exitoso de logs
 Flujo completo sin errores
+
+![image](https://github.com/user-attachments/assets/b11c8df6-50cb-4f1b-b211-1a001789d209)
+
+
+![image](https://github.com/user-attachments/assets/b6387eb2-8908-4f7b-9254-a48510809bc7)
+
+
+
+![image](https://github.com/user-attachments/assets/87811a25-ac71-44b6-862d-f76211d0da21)
+
+
+
 
 
  Observaciones

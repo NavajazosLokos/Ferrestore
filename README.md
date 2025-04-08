@@ -3,6 +3,7 @@
 Nombre del Proyecto: Ferretestore.
 Descripción General: Este proyecto es un AI Agent Conversacional con Procesamiento de Datos y Cálculos Automatizados en n8n, implementa un agente inteligente diseñado para funcionar como asistente virtual de una tienda de ferretería hipotética. El AI Agent interactúa con los usuarios mediante un chat, respondiendo consultas y realizando cálculos según las solicitudes del usuario. Para ello, accede a una base de datos en formato CSV que contiene información sobre los productos disponibles y sus respectivos precios. El agente se conecta a múltiples nodos dentro del entorno de n8n, lo que le permite ejecutar tareas específicas como el procesamiento de lenguaje natural, la realización de cálculos matemáticos, el almacenamiento de interacciones y la consulta dinámica de datos, ofreciendo así una experiencia conversacional automatizada y eficiente.
 
+![image](https://github.com/user-attachments/assets/3db8eb7f-6d91-4a87-9db9-bd424518649d)
 Componentes del Workflow
 Componentes del Workflow
 1. Trigger – Chat de Entrada
@@ -21,6 +22,7 @@ Método: POST
 
 
 Respuesta inmediata: Estado 200 OK
+![Imagen de WhatsApp 2025-04-07 a las 22 33 35_5167b72c](https://github.com/user-attachments/assets/063f3081-b571-4249-a6b0-d2220c9368af)
 
 
 2. Modelo de Inteligencia Artificial (IA)
@@ -128,4 +130,4 @@ El sistema puede escalarse para integrar APIs externas, otros tipos de datos o f
 
 
 
-![image](https://github.com/user-attachments/assets/3db8eb7f-6d91-4a87-9db9-bd424518649d)
+

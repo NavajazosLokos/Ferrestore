@@ -8,6 +8,7 @@ Componentes del Workflow
 Componentes del Workflow
 1. Trigger – Chat de Entrada
 
+![Imagen de WhatsApp 2025-04-07 a las 22 32 21_a19fa45b](https://github.com/user-attachments/assets/231b2dab-c90c-49c9-8ed0-c506dc4e38f5)
 
 Tipo de nodo: Chat Trigger
 
@@ -23,10 +24,12 @@ Método: POST
 
 Respuesta inmediata: Estado 200 OK
 
-![Imagen de WhatsApp 2025-04-07 a las 22 33 35_5167b72c](https://github.com/user-attachments/assets/063f3081-b571-4249-a6b0-d2220c9368af)
+
 
 
 2. Modelo de Inteligencia Artificial (IA)
+
+![Imagen de WhatsApp 2025-04-07 a las 22 33 35_5167b72c](https://github.com/user-attachments/assets/063f3081-b571-4249-a6b0-d2220c9368af)
 
 Tipo de nodo: Gorq Chat Model
 Descripción: Este nodo procesa el mensaje del usuario utilizando un modelo de lenguaje avanzado, con el fin de generar respuestas relevantes y coherentes en función del contexto.

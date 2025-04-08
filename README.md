@@ -22,6 +22,7 @@ Método: POST
 
 
 Respuesta inmediata: Estado 200 OK
+
 ![Imagen de WhatsApp 2025-04-07 a las 22 33 35_5167b72c](https://github.com/user-attachments/assets/063f3081-b571-4249-a6b0-d2220c9368af)
 
 

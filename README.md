@@ -56,17 +56,30 @@ Datos utilizados
 Resultado del cálculo
 
  Flujo General
+ 
 [Usuario] 
+
    ↓ 
+   
 [Chat Trigger] 
+
    ↓ 
+   
 [Modelo de IA]
+
    ↓
+   
 ┌──────────────┬─────────────┬─────────────┐
+
 ↓              ↓             ↓
+
 [CSV Reader]  [Calculadora] [Almacenamiento]
+
    ↓              ↓             ↓
+
+   
    →→→→→→→→→→→ [Respuesta al Usuario] ←←←←←←←←←←
+   
 
    
 

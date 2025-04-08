@@ -27,7 +27,9 @@ Respuesta inmediata: Estado 200 OK
 
 
 
+
 2. Modelo de Inteligencia Artificial (IA)
+
 
 ![Imagen de WhatsApp 2025-04-07 a las 22 33 35_5167b72c](https://github.com/user-attachments/assets/063f3081-b571-4249-a6b0-d2220c9368af)
 
@@ -47,6 +49,8 @@ Ejemplo de contenido del CSV:
 
 
 3.  Nodo Calculadora
+
+
 ![calcu](https://github.com/user-attachments/assets/7ccfc87a-b77e-458a-ab50-c4da28738a84)
 
 Tipo de nodo: Function - Code
@@ -54,6 +58,8 @@ Descripción: Realiza operaciones matemáticas con los datos extraídos del CSV 
 Ejemplo: Sumar valores, calcular promedios, etc.
 
 4.  Nodo de Almacenamiento
+
+
 ![memory](https://github.com/user-attachments/assets/f10c853b-3dd1-4350-819e-642d6c53490f)
 
 Tipo de nodo: Connected Chat Trigger Node - Archivo JSON

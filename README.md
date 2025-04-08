@@ -46,12 +46,16 @@ Ejemplo de contenido del CSV:
 ![image](https://github.com/user-attachments/assets/de79156c-c5e7-439b-84c9-516b631021bd)
 
 
-4.  Nodo Calculadora
+3.  Nodo Calculadora
+![calcu](https://github.com/user-attachments/assets/7ccfc87a-b77e-458a-ab50-c4da28738a84)
+
 Tipo de nodo: Function - Code
 Descripción: Realiza operaciones matemáticas con los datos extraídos del CSV o del mensaje del usuario.
 Ejemplo: Sumar valores, calcular promedios, etc.
 
-5.  Nodo de Almacenamiento
+4.  Nodo de Almacenamiento
+![memory](https://github.com/user-attachments/assets/f10c853b-3dd1-4350-819e-642d6c53490f)
+
 Tipo de nodo: Connected Chat Trigger Node - Archivo JSON
 Descripción: Guarda los resultados de las interacciones o cálculos del agente, permitiendo registrar consultas, respuestas y datos procesados.
 Campos comunes:

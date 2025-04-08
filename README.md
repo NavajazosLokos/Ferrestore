@@ -85,22 +85,32 @@ Resultado del cálculo
 
 Casos de Uso
 Consulta de datos específicos:
+
 Usuario: "¿Cuál es el valor del producto _1?"
 Respuesta: "El valor de producto 1 es 25."
+
 Realización de cálculos:
 Usuario: "¿Cuál es la suma de los valores de todos los productos?"
 Respuesta: "La suma total es 65."
+
 Registro de interacciones:
 Todas las interacciones quedan guardadas para seguimiento o análisis posterior.
 
- Requisitos del Sistema
+Requisitos del Sistema
 Plataforma: n8n (self-hosted o cloud)
+
 Nodos requeridos:
+
 Webhook / Chat
+
 AI Agent (OpenAI, Hugging Face, etc.)
+
 CSV Parser
+
 Function o Math
+
 Nodo de almacenamiento
+
 
  Pruebas Realizadas
 Validación de respuestas del modelo de IA

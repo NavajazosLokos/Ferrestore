@@ -5,7 +5,7 @@ Descripción General: Este proyecto es un AI Agent Conversacional con Procesamie
 
 Componentes del Workflow
 Componentes del Workflow
-Trigger – Chat de Entrada
+1. Trigger – Chat de Entrada
 
 
 Tipo de nodo: Chat Trigger
@@ -23,29 +23,16 @@ Método: POST
 Respuesta inmediata: Estado 200 OK
 
 
-Modelo de Inteligencia Artificial (IA)
-
+2. Modelo de Inteligencia Artificial (IA)
 
 Tipo de nodo: Gorq Chat Model
-
-
 Descripción: Este nodo procesa el mensaje del usuario utilizando un modelo de lenguaje avanzado, con el fin de generar respuestas relevantes y coherentes en función del contexto.
 
-
 Parámetros:
-
-
 Entrada: Texto proporcionado por el usuario
-
-
 Contexto adicional: Historial de la conversación
-
-
 Modelo: deepseek-r1-distill-qwen-32b
-
-
-
- Nodo CSV – Fuente de Datos
+Nodo CSV – Fuente de Datos
 Tipo de nodo: Read Binary File → Convert to JSON (o Read CSV)
 Descripción: Lee un archivo CSV que contiene una base de datos utilizada por el agente para responder o tomar decisiones.
 Ejemplo de contenido del CSV:
